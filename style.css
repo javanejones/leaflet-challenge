@@ -9,4 +9,11 @@ html {
   height: 100%;
 }
 
+/* Set Legend Style */
+.info {
+  padding: 1px 10px;
+  background: #fffffffa;
+  border-radius: 5px;
+}
+
 .legend i { width:20px; height: 1px; float: right; background-color: white; padding: 5px 5px;}
