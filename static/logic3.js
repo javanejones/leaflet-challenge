@@ -97,14 +97,16 @@ d3.json(queryUrl, function(data) {
   }
   return L.circles(latlng, option );
  }
+
+
  function chooseColor (mag){
     switch(true){
     case mag<=1:
           return "aquamarine";
     case mag<=2:
-          return "greenyellow";
+          return "yellow";
     case mag<=3:
-          return "green";
+          return "purple";
     case mag<=4:
           return "darkgreen";
     case mag<=5:
@@ -113,21 +115,47 @@ d3.json(queryUrl, function(data) {
           return "Orange";
   }
  }
-//  legend works somewhat
+//  legend works somewhat reference https://gis.stackexchange.com/questions/133630/adding-leaflet-legend
 
  var legend = L.control({position: "bottomright"});
  legend.onAdd = function() {
   var div = L.DomUtil.create("div", "info legend"),
   mag = ['0', '1', '2', '3', '4', '5'];
-  
+  var colors = ["aquamarine","yellow","purple","darkgreen", "maroon", "orange"];
+
   div.innerHTML += "<h3>Magnitude</h3>"
 
   for (var i =0; i < mag.length; i++) {
     div.innerHTML += 
-    '<i class= "circle" style="background:' + chooseColor(mag[i] + 1) + '"></i> ' +
+    '<i class= "circle" style="background:' + colors[i] + '"></i> ' +
         mag[i] + (mag[i + 1] ? '&ndash;' + mag[i + 1] + '<br>' : '+');
     }
     return div;
   };
   legend.addTo(myMap);
+  
 });
+
+// function createEqMarkers(response) {
+//   L.geoJSON(response, {
+//     pointToLayer: function (feature, latlng) {
+//       return L.circleMarker(latlng);
+//     }, style: styleInfo,
+//     onEachFeature: onEachFeature
+//   }).addTo(earthquakes);
+// }
+// earthquakes.addTo(map);
+// From Me to Shalesh Kumbhat:  (Privately) 12:03 PM
+// https://python-visualization.github.io/folium/quickstart.html
+// From Shalesh Kumbhat to Me:  (Privately) 12:09 PM
+// legend.addTo(map);
+// function styleInfo(feature) {
+//   return {
+//     radius: getRadius(feature.properties.mag),
+//     fillColor: getColor(feature.properties.mag),
+// function getRadius(magnitude) {
+//   if (magnitude === 0) {
+//     return 1
+//   }
+//   return magnitude * 4
+// }
