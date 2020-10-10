@@ -9,4 +9,4 @@ html {
   height: 100%;
 }
 
-.legend i { width:10px; height: 11px; float: right; background-color: white;}
+.legend i { width:20px; height: 1px; float: right; background-color: white; padding: 5px 5px;}
