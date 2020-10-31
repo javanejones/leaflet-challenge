@@ -1,5 +1,3 @@
-# leaflet-challenge
-HW#17
 # Leaflet Homework - Visualizing Data with Leaflet
 
 ## Background
